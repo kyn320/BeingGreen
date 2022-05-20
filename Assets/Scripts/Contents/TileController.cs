@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 public class TileController : MonoBehaviour
@@ -16,6 +17,8 @@ public class TileController : MonoBehaviour
 
     Coroutine flipAnimationCoroutine = null;
     public float flipTime;
+
+    public UnityEvent<int, int> flipEvent;
 
     public void Initialize(int index, int currentOwner)
     {
@@ -33,6 +36,7 @@ public class TileController : MonoBehaviour
             StopCoroutine(flipAnimationCoroutine);
 
         flipAnimationCoroutine = StartCoroutine("CoFlipAnimation");
+        flipEvent?.Invoke(index, currentOwner);
     }
 
     IEnumerator CoFlipAnimation()

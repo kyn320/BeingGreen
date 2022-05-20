@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 public class WorldController : MonoBehaviour
@@ -11,6 +12,9 @@ public class WorldController : MonoBehaviour
     public Vector2Int mapSize;
 
     public TileController[] tileControllers;
+
+    public int[] ownerTileCount;
+    public UnityEvent<int, int> updateOwnerTileCountEvent;
 
     [Button("월드(타일) 생성")]
     public void CreateWorld()
@@ -29,9 +33,10 @@ public class WorldController : MonoBehaviour
                 var tileGo = Instantiate(tilePrefab, transform);
                 var tileController = tileGo.GetComponent<TileController>();
                 tileGo.transform.localPosition = new Vector3(startOffset.x + x * tileSize.x
-                    ,0
-                    ,startOffset.y + y * tileSize.z);
+                    , 0
+                    , startOffset.y + y * tileSize.z);
                 tileControllers[index] = tileController;
+                tileController.flipEvent.AddListener(UpdateTileOwner);
                 ++index;
             }
         }
@@ -43,7 +48,7 @@ public class WorldController : MonoBehaviour
         var ownerList = new List<int>();
         var maxCount = mapSize.x * mapSize.y;
 
-        for (var i = 0; i < maxCount; ++i)
+        for (var i = 0; i < maxCount / 2; ++i)
         {
             ownerList.Add(0);
             ownerList.Add(1);
@@ -54,11 +59,23 @@ public class WorldController : MonoBehaviour
             var randOwnerDataIndex = Random.Range(0, ownerList.Count);
             var owner = ownerList[randOwnerDataIndex];
 
+            ++ownerTileCount[owner];
             tileControllers[i].Initialize(i, owner);
 
             ownerList.RemoveAt(randOwnerDataIndex);
         }
+    }
 
+    private void UpdateTileOwner(int index, int owner)
+    {
+        ++ownerTileCount[owner];
+        --ownerTileCount[(owner + 1) % 2];
+        updateOwnerTileCountEvent.Invoke(index, owner);
+    }
+
+    public int[] GetOwnerTileCount()
+    {
+        return ownerTileCount;
     }
 
 }
