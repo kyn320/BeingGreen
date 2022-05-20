@@ -13,15 +13,10 @@ public abstract class CharacterMove : MonoBehaviour
 
     public Vector3 Direction { get => m_Direction; set => m_Direction = value; }
 
-    abstract protected void CharacterMovement();
+    abstract public void CharacterMovement(string Hori, string Verti);
 
-    private void FixedUpdate()
-    {
-        CharacterMovement();
-        Move();
-    }
 
-    private void Move()
+    private void MoveCharacter()
     {
         Vector3 dir = new Vector3(x, 0, z);
 
