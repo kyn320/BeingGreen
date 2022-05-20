@@ -18,6 +18,7 @@ public class GameRuleController : Singleton<GameRuleController>
     public float CurrentPlayTime { get { return playTime; } }
 
     public UnityEvent<float, float> updatePlayTimeEvent;
+    public UnityEvent<float> updatePlayDelaTimeEvent;
 
     public bool isPlay = false;
 
@@ -40,6 +41,7 @@ public class GameRuleController : Singleton<GameRuleController>
 
         playTime -= Time.deltaTime;
         updatePlayTimeEvent?.Invoke(playTime, gameRule.playTime);
+        updatePlayDelaTimeEvent?.Invoke(Time.deltaTime);
 
         if (playTime <= 0)
         {

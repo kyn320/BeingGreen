@@ -29,6 +29,8 @@ public class TileController : MonoBehaviour
 
     public void Flip()
     {
+        Debug.Log($"Flip : {index}");
+
         ++currentOwner;
         currentOwner = currentOwner % 2;
 
@@ -42,18 +44,16 @@ public class TileController : MonoBehaviour
     IEnumerator CoFlipAnimation()
     {
         var animationTime = flipTime;
-        var currentRotation = ((currentOwner + 1) % 2) * 180f;
-        var targetRotation = currentOwner * 180f;
+        var currentRotation = tileObject.transform.localRotation;
+        var targetRotation = Quaternion.Euler(tileObject.transform.localRotation.eulerAngles + Vector3.forward * 180f);
 
-        var rotation = Quaternion.Euler(0, 0, 0);
-
-        while (animationTime >= 0)
+        while (animationTime > 0)
         {
-            rotation.z = Mathf.Lerp(currentRotation, targetRotation, 1f - (flipTime / animationTime));
-            tileObject.transform.localRotation = rotation;
+            tileObject.transform.localRotation = Quaternion.Lerp(currentRotation, targetRotation, 1f - (animationTime / flipTime));
             animationTime -= Time.deltaTime;
             yield return null;
         }
+        tileObject.transform.localRotation = targetRotation;
 
     }
 
