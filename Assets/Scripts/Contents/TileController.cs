@@ -45,7 +45,7 @@ public class TileController : MonoBehaviour
     {
         var animationTime = flipTime;
         var currentRotation = tileObject.transform.localRotation;
-        var targetRotation = Quaternion.Euler(tileObject.transform.localRotation.eulerAngles + Vector3.forward * 180f);
+        var targetRotation = Quaternion.Euler(Vector3.forward * 180f * currentOwner);
 
         while (animationTime > 0)
         {
