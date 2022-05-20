@@ -20,6 +20,8 @@ public class TileController : MonoBehaviour
 
     public UnityEvent<int, int> flipEvent;
 
+    public bool isBingo = false;
+
     public void Initialize(int index, int currentOwner)
     {
         this.index = index;
@@ -27,8 +29,20 @@ public class TileController : MonoBehaviour
         tileObject.transform.localRotation = Quaternion.Euler(0, 0, currentOwner * 180);
     }
 
+    public void SetBingo(bool isBingo)
+    {
+        this.isBingo = isBingo;
+    }
+
+    public int GetOwner() { 
+        return currentOwner;
+    }
+
     public void Flip()
     {
+        if (isBingo)
+            return;
+
         Debug.Log($"Flip : {index}");
 
         ++currentOwner;

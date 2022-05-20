@@ -86,7 +86,63 @@ public class WorldController : MonoBehaviour
     {
         ++ownerTileCount[owner];
         --ownerTileCount[(owner + 1) % 2];
+
+        CheckBingoByIndex(index, owner);
+
         updateOwnerTileCountEvent.Invoke(index, owner);
+    }
+
+    public void CheckBingoByIndex(int index, int owner)
+    {
+        var col = GetColNum(index);
+        var startX = col * mapSize.x;
+        var endX = col * mapSize.x + mapSize.x;
+
+        //index Count가 mapSize.x와 같으면 빙고 처리
+        var indexXList = new List<int>();
+        for (var x = startX; x < endX; ++x)
+        {
+            if (tileControllers[x].GetOwner() == owner)
+            {
+                indexXList.Add(x);
+            }
+        }
+
+        if(indexXList.Count == mapSize.x) {
+            for (var i = 0; i < indexXList.Count; ++i) {
+                tileControllers[indexXList[i]].SetBingo(true);
+            }
+        }
+
+        var startY = index - col * mapSize.x;
+        var endY = index + (mapSize.y - col) * mapSize.x;
+        //index Count가 mapSize.y와 같으면 빙고 처리
+        var indexYList = new List<int>();
+        for (var y = startY; y < endY; y += mapSize.x)
+        {
+            if (tileControllers[y].GetOwner() == owner)
+            {
+                indexYList.Add(y);
+            }
+        }
+
+        if (indexYList.Count == mapSize.y)
+        {
+            for (var i = 0; i < indexYList.Count; ++i)
+            {
+                tileControllers[indexYList[i]].SetBingo(true);
+            }
+        }
+    }
+
+    public int GetColNum(int index)
+    {
+        for (var i = 0; i < mapSize.y; ++i)
+        {
+            if (index < (i + 1) * mapSize.x)
+                return i;
+        }
+        return -1;
     }
 
     public int[] GetOwnerTileCount()
