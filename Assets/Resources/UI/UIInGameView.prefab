@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 7725824097682257688}
   - component: {fileID: 4874853780148202664}
   - component: {fileID: 1149891832052789846}
+  - component: {fileID: 3483425956228545233}
   m_Layer: 0
   m_Name: Btn_Pause
   m_TagString: Untagged
@@ -286,6 +287,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3483425956228545233}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3483425956228545233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109968257564797202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9e3416dfddc7e4281fb73e7192390d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: ee78e97893eb85d4ab4b5f9338c9236c, type: 3}
+  autoPlay: 0
 --- !u!1 &2826354838037155622
 GameObject:
   m_ObjectHideFlags: 0

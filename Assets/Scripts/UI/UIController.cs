@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class UIController : Singleton<UIController>
 {
+    public Camera CanvaCamra { get { return rootCanvas?.worldCamera; } }
     public Canvas rootCanvas;
     public Transform viewGroup;
 
