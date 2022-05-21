@@ -70,6 +70,8 @@ public class GameRuleController : Singleton<GameRuleController>
             winner = 2;
         }
         endGameEvent?.Invoke(winner);
+        var resultData = new UIGameResultPopupData(ownerTileCounts, winner);
+        UIController.Instance.OpenPopup(resultData);
     }
 
     private void Update()
