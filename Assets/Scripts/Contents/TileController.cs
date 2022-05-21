@@ -17,7 +17,7 @@ public class TileController : MonoBehaviour
 
     Coroutine flipAnimationCoroutine = null;
     public float flipTime;
-
+    public GameObject flipVFX;
     public UnityEvent<int, int> flipEvent;
 
     public bool isBingo = false;
@@ -34,7 +34,8 @@ public class TileController : MonoBehaviour
         this.isBingo = isBingo;
     }
 
-    public int GetOwner() { 
+    public int GetOwner()
+    {
         return currentOwner;
     }
 
@@ -60,7 +61,7 @@ public class TileController : MonoBehaviour
         var animationTime = flipTime;
         var currentRotation = tileObject.transform.localRotation;
         var targetRotation = Quaternion.Euler(Vector3.forward * 180f * currentOwner);
-
+        flipVFX.SetActive(true);
         while (animationTime > 0)
         {
             tileObject.transform.localRotation = Quaternion.Lerp(currentRotation, targetRotation, 1f - (animationTime / flipTime));
@@ -68,6 +69,7 @@ public class TileController : MonoBehaviour
             yield return null;
         }
         tileObject.transform.localRotation = targetRotation;
+        flipVFX.SetActive(false);
 
     }
 
