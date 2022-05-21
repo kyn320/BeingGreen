@@ -19,9 +19,12 @@ public class TileController : MonoBehaviour
     public float flipTime;
     public GameObject flipVFX;
     public UnityEvent<int, int> flipEvent;
+    public AudioClip flipSFX;
 
     public GameObject selectVFX;
+
     public bool isBingo = false;
+    public GameObject bingoVFX;
 
     public void Initialize(int index, int currentOwner)
     {
@@ -33,6 +36,7 @@ public class TileController : MonoBehaviour
     public void SetBingo(bool isBingo)
     {
         this.isBingo = isBingo;
+        bingoVFX.SetActive(isBingo);
     }
 
     public int GetOwner()
@@ -70,6 +74,7 @@ public class TileController : MonoBehaviour
         var currentRotation = tileObject.transform.localRotation;
         var targetRotation = Quaternion.Euler(Vector3.forward * 180f * currentOwner);
         ObjectPoolManager.Instance.Get(flipVFX.name).transform.position = transform.position;
+        SoundManager.Instance.PlaySFX(flipSFX);
         while (animationTime > 0)
         {
             tileObject.transform.localRotation = Quaternion.Lerp(currentRotation, targetRotation, 1f - (animationTime / flipTime));

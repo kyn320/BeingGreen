@@ -48,6 +48,30 @@ public class GameRuleController : Singleton<GameRuleController>
         startGameEvent?.Invoke();
     }
 
+    public void EndGame()
+    {
+        isPlay = false;
+
+        var ownerTileCounts = worldController.GetOwnerTileCount();
+        Debug.Log($"0 : {ownerTileCounts[0]} / 1 : {ownerTileCounts[1]}");
+
+        var winner = 0;
+
+        if (ownerTileCounts[0] > ownerTileCounts[1])
+        {
+            winner = 0;
+        }
+        else if (ownerTileCounts[0] < ownerTileCounts[1])
+        {
+            winner = 1;
+        }
+        else
+        {
+            winner = 2;
+        }
+        endGameEvent?.Invoke(winner);
+    }
+
     private void Update()
     {
         if (!isPlay)
@@ -59,26 +83,15 @@ public class GameRuleController : Singleton<GameRuleController>
 
         if (playTime <= 0)
         {
-            isPlay = false;
+            EndGame();
+        }
+    }
 
-            var ownerTileCounts = worldController.GetOwnerTileCount();
-            Debug.Log($"0 : {ownerTileCounts[0]} / 1 : {ownerTileCounts[1]}");
-
-            var winner = 0;
-
-            if (ownerTileCounts[0] > ownerTileCounts[1])
-            {
-                winner = 0;
-            }
-            else if (ownerTileCounts[0] < ownerTileCounts[1])
-            {
-                winner = 1;
-            }
-            else
-            {
-                winner = 2;
-            }
-            endGameEvent?.Invoke(winner);
+    public void UpdateTileOwners(int tileCount1P, int tileCount2P, int maxCount)
+    {
+        if (tileCount1P == maxCount || tileCount2P == maxCount)
+        {
+            EndGame();
         }
     }
 
