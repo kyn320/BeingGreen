@@ -22,21 +22,30 @@ public class GameRuleController : Singleton<GameRuleController>
 
     public bool isPlay = false;
 
+    public UnityEvent initalizeGameEvent;
     public UnityEvent startGameEvent;
     public UnityEvent<int> endGameEvent;
 
     private void Start()
     {
-        StartGame();
+        InitializeGame();
     }
 
-    [Button("게임 시작")]
-    public void StartGame()
+
+    [Button("게임 준비")]
+    public void InitializeGame()
     {
         playTime = gameRule.playTime;
+        updatePlayTimeEvent?.Invoke(playTime, gameRule.playTime);
+        initalizeGameEvent?.Invoke();
+        StartCoroutine("CoWaitStartCountUpdate");
+    }
+
+    public void StartGame()
+    {
+
         isPlay = true;
         startGameEvent?.Invoke();
-        updatePlayTimeEvent?.Invoke(playTime, gameRule.playTime);
     }
 
     private void Update()
@@ -71,5 +80,17 @@ public class GameRuleController : Singleton<GameRuleController>
             }
             endGameEvent?.Invoke(winner);
         }
+    }
+
+    IEnumerator CoWaitStartCountUpdate()
+    {
+        var currentTime = gameRule.startCountTime;
+        while (currentTime > 0)
+        {
+            currentTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        StartGame();
     }
 }

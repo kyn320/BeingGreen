@@ -20,6 +20,8 @@ public class CharacterManager : Singleton<CharacterManager>
     private Vector3 m_StartPlayerPos = Vector3.zero;
     private Vector3 m_StartGodPos = Vector3.zero;
 
+    private bool isInput = false;
+
     [Button("Spawn Character")]
     public void SpawnCharacter()
     {
@@ -32,10 +34,14 @@ public class CharacterManager : Singleton<CharacterManager>
         m_God = SetCharacter(m_GodPrefab, m_StartGodPos, m_SelectNum == 0);
     }
 
+    public void UpdateInputed(bool isInput)
+    {
+        this.isInput = isInput;
+    }
 
     private void Update()
     {
-        if (Time.timeScale < 0.1f) return;
+        if (Time.timeScale < 0.1f || !isInput) return;
 
         if (m_SelectNum == 0)
         {

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d23900de28be24a95b442a097d3536, type: 3}
   m_Name: GameRule
   m_EditorClassIdentifier: 
+  startCountTime: 3
   playTime: 121
