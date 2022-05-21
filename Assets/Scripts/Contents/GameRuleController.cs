@@ -25,6 +25,11 @@ public class GameRuleController : Singleton<GameRuleController>
     public UnityEvent startGameEvent;
     public UnityEvent endGameEvent;
 
+    private void Start()
+    {
+        StartGame();
+    }
+
     [Button("게임 시작")]
     public void StartGame()
     {

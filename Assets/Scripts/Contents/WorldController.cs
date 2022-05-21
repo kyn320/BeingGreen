@@ -97,6 +97,8 @@ public class WorldController : MonoBehaviour
 
             ownerList.RemoveAt(randOwnerDataIndex);
         }
+
+        updatetotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
     }
 
     private void UpdateTileOwner(int index, int owner)
