@@ -24,7 +24,7 @@ public class UIGameResultPopup : UIBasePopup
         {
             case 0:
             case 1:
-                resultDescription = string.Format("Player {0} Win", resultData.winner);
+                resultDescription = string.Format("Player {0} Win", resultData.winner + 1);
                 break;
             case 2:
                 resultDescription = string.Format("Draw");
