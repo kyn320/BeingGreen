@@ -11,7 +11,7 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject m_PlayerFemalePrefab;
     [SerializeField] private GameObject m_GodPrefab;
 
-    private int m_SelectNum = 1;
+    private int m_SelectNum = 0;
     private bool m_IsFemale = false;
 
     private CharacterMove m_Player = null;
