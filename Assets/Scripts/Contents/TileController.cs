@@ -61,7 +61,7 @@ public class TileController : MonoBehaviour
         var animationTime = flipTime;
         var currentRotation = tileObject.transform.localRotation;
         var targetRotation = Quaternion.Euler(Vector3.forward * 180f * currentOwner);
-        flipVFX.SetActive(true);
+        ObjectPoolManager.Instance.Get(flipVFX.name).transform.position = transform.position;
         while (animationTime > 0)
         {
             tileObject.transform.localRotation = Quaternion.Lerp(currentRotation, targetRotation, 1f - (animationTime / flipTime));
@@ -69,7 +69,6 @@ public class TileController : MonoBehaviour
             yield return null;
         }
         tileObject.transform.localRotation = targetRotation;
-        flipVFX.SetActive(false);
 
     }
 

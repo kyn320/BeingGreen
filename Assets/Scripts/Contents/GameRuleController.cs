@@ -23,7 +23,7 @@ public class GameRuleController : Singleton<GameRuleController>
     public bool isPlay = false;
 
     public UnityEvent startGameEvent;
-    public UnityEvent endGameEvent;
+    public UnityEvent<int> endGameEvent;
 
     private void Start()
     {
@@ -50,11 +50,26 @@ public class GameRuleController : Singleton<GameRuleController>
 
         if (playTime <= 0)
         {
-            endGameEvent?.Invoke();
             isPlay = false;
 
             var ownerTileCounts = worldController.GetOwnerTileCount();
             Debug.Log($"0 : {ownerTileCounts[0]} / 1 : {ownerTileCounts[1]}");
+
+            var winner = 0;
+
+            if (ownerTileCounts[0] > ownerTileCounts[1])
+            {
+                winner = 0;
+            }
+            else if (ownerTileCounts[0] < ownerTileCounts[1])
+            {
+                winner = 1;
+            }
+            else
+            {
+                winner = 2;
+            }
+            endGameEvent?.Invoke(winner);
         }
     }
 }
