@@ -15,46 +15,23 @@ public class TileFliper : MonoBehaviour
 
     public LayerMask layerMask;
 
+    private List<TileController> selectTiles = new List<TileController>();
+
     private void Start()
     {
-        isUpdateTime = true;
         currentActionTime = actionTime;
-
-        RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit, tileGroundCheckDistance, layerMask);
-
-        if (hit.collider != null)
-        {
-            var centerPoint = hit.collider.transform.position;
-            transform.position = new Vector3(centerPoint.x, transform.position.y, centerPoint.z);
-        }
+        FindTile();
     }
 
-    private void Update()
-    {
-        if (!isUpdateTime)
-            return;
-
-        currentActionTime -= Time.deltaTime;
-        if (currentActionTime <= 0)
-        {
-            isUpdateTime = false;
-            Flip();
-            Destroy(gameObject);
-        }
-    }
-
-    public void Flip()
-    {
-        var tileList = new List<TileController>();
-
+    protected void FindTile() {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit, tileGroundCheckDistance, layerMask);
 
         if (hit.collider != null)
         {
             var centerTileObject = hit.collider.gameObject;
-            var centerTile = centerTileObject.GetComponent<TileController>();
+            var centerPoint = hit.collider.transform.position;
+            transform.position = new Vector3(centerPoint.x, transform.position.y, centerPoint.z);
 
             var tileObjects = Physics.OverlapSphere(centerTileObject.transform.position, tileRange);
             for (var i = 0; i < tileObjects.Length; ++i)
@@ -65,14 +42,42 @@ public class TileFliper : MonoBehaviour
                 {
                     var tileController = tileObjects[i].GetComponent<TileController>();
                     if (tileController != null)
-                        tileList.Add(tileController);
+                        selectTiles.Add(tileController);
                 }
             }
         }
 
-        for (var i = 0; i < tileList.Count; ++i)
+        Select(true);
+        isUpdateTime = true;
+    }
+
+    private void Update()
+    {
+        if (!isUpdateTime)
+            return;
+
+        currentActionTime -= Time.deltaTime;
+        if (currentActionTime <= 0)
         {
-            tileList[i].Flip();
+            Select(false);
+            isUpdateTime = false;
+            Flip();
+            Destroy(gameObject);
+        }
+    }
+
+    public void Select(bool isSelect) {
+        for (var i = 0; i < selectTiles.Count; ++i)
+        {
+            selectTiles[i].Select(isSelect);
+        }
+    }
+
+    public void Flip()
+    {
+        for (var i = 0; i < selectTiles.Count; ++i)
+        {
+            selectTiles[i].Flip();
         }
     }
 }

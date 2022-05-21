@@ -20,6 +20,7 @@ public class TileController : MonoBehaviour
     public GameObject flipVFX;
     public UnityEvent<int, int> flipEvent;
 
+    public GameObject selectVFX;
     public bool isBingo = false;
 
     public void Initialize(int index, int currentOwner)
@@ -39,8 +40,15 @@ public class TileController : MonoBehaviour
         return currentOwner;
     }
 
+    public void Select(bool isSelect)
+    {
+        selectVFX.SetActive(isSelect);
+    }
+
     public void Flip()
     {
+        selectVFX.SetActive(false);
+
         if (isBingo)
             return;
 
