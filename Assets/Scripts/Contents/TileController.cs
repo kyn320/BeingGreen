@@ -6,6 +6,9 @@ using Sirenix.OdinInspector;
 
 public class TileController : MonoBehaviour
 {
+    [SerializeField]
+    private TileBingoData tileBingoData;
+
     [ShowInInspector]
     [ReadOnly]
     protected int index;
@@ -25,6 +28,10 @@ public class TileController : MonoBehaviour
 
     public bool isBingo = false;
     public GameObject bingoVFX;
+    public Transform bingoTilePoint;
+
+    Coroutine fillAnimationCoroutine = null;
+    public float fillTime;
 
     public void Initialize(int index, int currentOwner)
     {
@@ -35,7 +42,11 @@ public class TileController : MonoBehaviour
 
     public void SetBingo(bool isBingo)
     {
+        if (this.isBingo)
+            return;
+
         this.isBingo = isBingo;
+        CreateBingoTile();
         bingoVFX.SetActive(isBingo);
     }
 
@@ -68,6 +79,20 @@ public class TileController : MonoBehaviour
         flipEvent?.Invoke(index, currentOwner);
     }
 
+    public void FillScale()
+    {
+        if (fillAnimationCoroutine != null)
+            StopCoroutine(fillAnimationCoroutine);
+
+        flipAnimationCoroutine = StartCoroutine("CoFillAnimation");
+    }
+
+    private void CreateBingoTile()
+    {
+        var bingoTileGo = Instantiate(tileBingoData.GetRandomTilePrefab(currentOwner), bingoTilePoint);
+        bingoTileGo.transform.localRotation = Quaternion.Euler(0, 180 * Random.Range(0, 2), 0);
+    }
+
     IEnumerator CoFlipAnimation()
     {
         var animationTime = flipTime;
@@ -82,7 +107,20 @@ public class TileController : MonoBehaviour
             yield return null;
         }
         tileObject.transform.localRotation = targetRotation;
+    }
 
+    IEnumerator CoFillAnimation()
+    {
+        var animationTime = fillTime;
+        var currentScale = tileObject.transform.localScale;
+        var targetScale = Vector3.one;
+        while (animationTime > 0)
+        {
+            tileObject.transform.localScale = Vector3.Lerp(currentScale, targetScale, 1f - (animationTime / flipTime));
+            animationTime -= Time.deltaTime;
+            yield return null;
+        }
+        tileObject.transform.localScale = targetScale;
     }
 
 }

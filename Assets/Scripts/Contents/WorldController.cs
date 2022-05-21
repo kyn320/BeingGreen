@@ -110,10 +110,30 @@ public class WorldController : MonoBehaviour
         ++ownerTileCount[owner];
         --ownerTileCount[(owner + 1) % 2];
 
-        updateOwnerTileCountEvent.Invoke(index, owner);
+        updateOwnerTileCountEvent?.Invoke(index, owner);
         updateTotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
         CheckBingoByIndex(index, owner);
     }
+
+    public void FlipAllTile(int targetOwner)
+    {
+        for (var i = 0; i < tileControllers.Length; ++i)
+        {
+            if (targetOwner != tileControllers[i].GetOwner())
+            {
+                tileControllers[i].Flip();
+            }
+        }
+    }
+
+    public void FillAllSize()
+    {
+        for (var i = 0; i < tileControllers.Length; ++i)
+        {
+            tileControllers[i].FillScale();
+        }
+    }
+
 
     public void CheckBingoByIndex(int index, int owner)
     {

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4077d82decab6d344aed1db6f60bb24a, type: 3}
+  m_Name: TileBingoData
+  m_EditorClassIdentifier: 
+  grassBingoTileList:
+  - {fileID: 4495715997405839143, guid: e8af080002136d74aa46b7cc94b4d1c7, type: 3}
+  - {fileID: 2307316546395988710, guid: 363bed63618001342a01f9ee86e1a243, type: 3}
+  - {fileID: 1938614575920203981, guid: ae25231c66ab1bc4f9b2ba24c8e12f4e, type: 3}
+  sandBingoTileList:
+  - {fileID: 4495715997405839143, guid: e8af080002136d74aa46b7cc94b4d1c7, type: 3}
+  - {fileID: 2307316546395988710, guid: 363bed63618001342a01f9ee86e1a243, type: 3}
+  - {fileID: 1938614575920203981, guid: ae25231c66ab1bc4f9b2ba24c8e12f4e, type: 3}

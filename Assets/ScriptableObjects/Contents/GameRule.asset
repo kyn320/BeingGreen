@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameRule
   m_EditorClassIdentifier: 
   startCountTime: 3
-  playTime: 121
+  playTime: 61

@@ -226,6 +226,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 581045162551513877}
+  - {fileID: 4242272676168747432}
   - {fileID: 2618233738513585364}
   - {fileID: 1712365707518832167}
   m_Father: {fileID: 0}
@@ -256,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0404a726fcd7f8540b45f4950ec2c7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileBingoData: {fileID: 11400000, guid: ca7c901b5a2953a41a9cf3f71738f3d2, type: 2}
   currentOwner: 0
   tileObject: {fileID: 581045162551513876}
   flipTime: 0.3
@@ -267,6 +269,8 @@ MonoBehaviour:
   selectVFX: {fileID: 1707795881993050447}
   isBingo: 0
   bingoVFX: {fileID: 1718087051568309833}
+  bingoTilePoint: {fileID: 4242272676168747432}
+  fillTime: 0
 --- !u!54 &4129475041365607511
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -283,6 +287,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &4419306613158268491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4242272676168747432}
+  m_Layer: 6
+  m_Name: BingoPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4242272676168747432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419306613158268491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 581045163404920045}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1735553135637616935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4341533637329898995, guid: a998cbe7ce27d5c49a34926261322bf9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4341533637329898995, guid: a998cbe7ce27d5c49a34926261322bf9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -367,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516059262337937475, guid: c3811a3f2f77228459dc852a1ef7e3a5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4516059262337937475, guid: c3811a3f2f77228459dc852a1ef7e3a5, type: 3}
       propertyPath: m_LocalPosition.x
