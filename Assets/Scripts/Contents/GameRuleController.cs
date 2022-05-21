@@ -50,6 +50,9 @@ public class GameRuleController : Singleton<GameRuleController>
 
     public void EndGame()
     {
+        if(!isPlay)
+            return;
+
         isPlay = false;
 
         var ownerTileCounts = worldController.GetOwnerTileCount();

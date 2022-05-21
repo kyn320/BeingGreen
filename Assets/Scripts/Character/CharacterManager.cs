@@ -10,6 +10,7 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject m_PlayerMalePrefab;
     [SerializeField] private GameObject m_PlayerFemalePrefab;
     [SerializeField] private GameObject m_GodPrefab;
+    [SerializeField] private GameObject m_uiplayerTimerHUDPrefab;
 
     private int m_SelectNum = 0;
     private bool m_IsFemale = false;
@@ -73,10 +74,17 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private CharacterMove SetCharacter(GameObject gameObject, Vector3 pos, bool Is2P = false)
     {
-        CharacterMove game = Instantiate(gameObject).GetComponent<CharacterMove>();
-        game.transform.position = pos;
-        if (Is2P) game.transform.rotation = Quaternion.Euler(0, 180f, 0);
-        game.gameObject.SetActive(true);
-        return game;
+        var playerGo = Instantiate(gameObject);
+        CharacterMove characterMove = playerGo.GetComponent<CharacterMove>();
+
+        var hud = Instantiate(m_uiplayerTimerHUDPrefab);
+        ObjectCreatorByTime objectCreator = playerGo.GetComponent<ObjectCreatorByTime>();
+        objectCreator.updateDeltaTimeEvent.AddListener(hud.GetComponent<UIPlayerTimer>().UpdateDeltaTime);
+        hud.GetComponent<TargetFollower>().target = playerGo.transform;
+
+        playerGo.transform.position = pos;
+        if (Is2P) playerGo.transform.rotation = Quaternion.Euler(0, 180f, 0);
+        playerGo.SetActive(true);
+        return characterMove;
     }
 }

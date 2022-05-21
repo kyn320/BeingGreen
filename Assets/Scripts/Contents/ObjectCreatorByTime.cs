@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectCreatorByTime : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ObjectCreatorByTime : MonoBehaviour
 
     private float currentCreateTime = 0;
     public float createTime = 5f;
+
+    public UnityEvent<float> updateDeltaTimeEvent;
 
     private void Start()
     {
@@ -18,6 +21,7 @@ public class ObjectCreatorByTime : MonoBehaviour
     public void UpdateTime(float deltaTime)
     {
         currentCreateTime -= deltaTime;
+        updateDeltaTimeEvent?.Invoke(deltaTime);
         if (currentCreateTime <= 0)
         {
             currentCreateTime = createTime;

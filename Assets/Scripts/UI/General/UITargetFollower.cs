@@ -12,16 +12,20 @@ public class UITargetFollower : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        rectTransform.anchorMax = Vector3.zero;
+        rectTransform.anchorMin = Vector3.zero;
+        rectTransform.pivot = Vector2.one * 0.5f;
     }
 
     private void FixedUpdate()
     {
-        if (target != null) { 
-            Camera cam = Camera.main;
-            var targetPos = RectTransformUtility.WorldToScreenPoint(Camera.main, target.position);
+        if (target != null)
+        {
+            var camera = Camera.main; //UIController.Instance.CanvaCamra;
+            var targetPos = RectTransformUtility.WorldToScreenPoint(camera, target.position);
 
-            rectTransform.anchoredPosition = targetPos; 
-        }   
+            rectTransform.anchoredPosition = targetPos;
+        }
     }
 
 
