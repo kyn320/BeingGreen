@@ -37,12 +37,12 @@ public class UISceneFade : UIBase
 
         UIManager.Instance.CloseAll();
 
+        yield return StartCoroutine(UIView.UISceneFadeView.LoadScene());
+
         if (UIView.UISceneFadeView.IsUIOpenOrClose)
         {
             UIManager.Instance.Open(UIView.UISceneFadeView.UI);
         }
-
-        yield return StartCoroutine(UIView.UISceneFadeView.LoadScene());
 
         Cg.DOFade(0, UIView.UISceneFadeView.FadeTime);
 

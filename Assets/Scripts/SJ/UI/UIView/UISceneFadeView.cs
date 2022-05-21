@@ -9,9 +9,9 @@ public class UISceneFadeView : MonoBehaviour
     public string TargetScene = "";
     public UI UI;
     public bool IsUIOpenOrClose = true;
-    public float FadeTime = 2;
+    public float FadeTime = 1;
 
-    public void LoadScene(string scene, UI uI, bool isUIOpen, float fadeTime)
+    public void LoadScene(string scene, UI uI, bool isUIOpen, float fadeTime = 1)
     {
         TargetScene = scene;
         UI = uI;

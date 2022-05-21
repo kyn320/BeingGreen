@@ -49,7 +49,7 @@ public class UINavigation : MonoBehaviour
     {
 
         int j = m_StackNav.Count;
-        Debug.Log(j);
+
         for (int i = 0; i < j; i++)
         {
             UIBase uIBase = m_StackNav.Pop();

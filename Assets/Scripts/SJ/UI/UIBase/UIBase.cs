@@ -59,7 +59,6 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void Close()
     {
-        Debug.Log(this.name);
         closeEvent?.Invoke();
         PlayAnimation(closeAnimationList, EndClose);
     }
@@ -79,13 +78,13 @@ public abstract class UIBase : MonoBehaviour
             switch (animationData.AnimationType)
             {
                 case UIAnimationType.Move:
-                    tween = transform.DOLocalMove(animationData.DestinationVector, animationData.Duration);
+                    tween = RectT.DOLocalMove(animationData.DestinationVector, animationData.Duration);
                     break;
                 case UIAnimationType.Rotate:
-                    tween = transform.DOLocalRotate(animationData.DestinationVector, animationData.Duration);
+                    tween = RectT.DOLocalRotate(animationData.DestinationVector, animationData.Duration);
                     break;
                 case UIAnimationType.Scale:
-                    tween = transform.DOScale(Vector3.one * animationData.DestinationFloat, animationData.Duration);
+                    tween = RectT.DOScale(Vector3.one * animationData.DestinationFloat, animationData.Duration);
                     break;
                 case UIAnimationType.Color:
                     tween = Cg.DOFade(animationData.DestinationColor.a, animationData.Duration);

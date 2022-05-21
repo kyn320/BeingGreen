@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 473595264622822433}
   - component: {fileID: 3177879519750878684}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Text_Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

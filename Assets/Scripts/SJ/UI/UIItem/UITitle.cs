@@ -11,7 +11,7 @@ public class UITitle : UIBase
 
     public override void InitEvent()
     {
-        UIButton["Btn_StartGame"].SetListener(this, () => UIView.UISceneFadeView.LoadScene("SampleScene_YN", UI.InGame, true, 1));
+        UIButton["Btn_StartGame"].SetListener(this, () => UIView.UISceneFadeView.LoadScene("SampleScene_YN", UI.InGame, true));
         UIButton["Btn_Option"].SetListener(this, () => UIManager.Instance.Open(UI.OptionPopUp));
         UIButton["Btn_QuitGame"].SetListener(this, () => Application.Quit());
     }
