@@ -21,6 +21,8 @@ public class WorldController : MonoBehaviour
     public int[] ownerTileCount;
     [FoldoutGroup("Tile")]
     public UnityEvent<int, int> updateOwnerTileCountEvent;
+    [FoldoutGroup("Tile")]
+    public UnityEvent<int, int, int> updatetotalTileCountEvent;
 
     [FoldoutGroup("Wall")]
     [SerializeField]
@@ -105,6 +107,7 @@ public class WorldController : MonoBehaviour
         CheckBingoByIndex(index, owner);
 
         updateOwnerTileCountEvent.Invoke(index, owner);
+        updatetotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
     }
 
     public void CheckBingoByIndex(int index, int owner)

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 
-public class SceneController : MonoBehaviour
+public class SceneController : Singleton<SceneController>
 {
     public void LoadScene(string sceneName, LoadSceneMode loadMode = LoadSceneMode.Single, UnityAction endAction = null)
     {

@@ -9,8 +9,8 @@ public class UIController : Singleton<UIController>
     public Canvas rootCanvas;
     public Transform viewGroup;
 
-    [SerializeField]
-    protected RectTransform popupBackgorund;
+    //[SerializeField]
+    //protected RectTransform popupBackgorund;
     public Transform popupGroup;
 
     public List<UIBaseView> viewList;
@@ -43,7 +43,7 @@ public class UIController : Singleton<UIController>
         var view = popupObject.GetComponent<UIBaseView>();
         ++popupViewCount;
         OpenView(view);
-        popupBackgorund.gameObject.SetActive(popupViewCount > 0);
+        //popupBackgorund.gameObject.SetActive(popupViewCount > 0);
 
 
         return view as UIBasePopup;
@@ -56,7 +56,7 @@ public class UIController : Singleton<UIController>
         var view = popupObject.GetComponent<UIBaseView>();
         ++popupViewCount;
         OpenView(view, popupData);
-        popupBackgorund.gameObject.SetActive(popupViewCount > 0);
+        //popupBackgorund.gameObject.SetActive(popupViewCount > 0);
 
         return view as UIBasePopup;
     }
@@ -72,14 +72,14 @@ public class UIController : Singleton<UIController>
         var view = viewList.Find(item => item.gameObject.name.Equals(popupName));
         --popupViewCount;
         CloseView(view);
-        popupBackgorund.gameObject.SetActive(popupViewCount > 0);
+        //popupBackgorund.gameObject.SetActive(popupViewCount > 0);
     }
 
     public void ClosePopup(UIBasePopup view)
     {
         --popupViewCount;
         CloseView(view);
-        popupBackgorund.gameObject.SetActive(popupViewCount > 0);
+        //popupBackgorund.gameObject.SetActive(popupViewCount > 0);
     }
 
     public void ClosePopup(UIPopupData popupData)
@@ -87,7 +87,7 @@ public class UIController : Singleton<UIController>
         var view = viewList.Find(item => item.viewName.Equals(popupData.viewName));
         --popupViewCount;
         CloseView(view);
-        popupBackgorund.gameObject.SetActive(popupViewCount > 0);
+        //popupBackgorund.gameObject.SetActive(popupViewCount > 0);
     }
 
 }

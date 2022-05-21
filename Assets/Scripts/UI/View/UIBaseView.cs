@@ -9,24 +9,30 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class UIBaseView : MonoBehaviour
 {
+    [FoldoutGroup("View")]
+    public string viewName = "";
+    [FoldoutGroup("View")]
+    protected UIType uiType;
+
+    protected RectTransform rectTransform;
     protected CanvasGroup canvasGroup;
 
-    public string viewName = "";
-
+    [FoldoutGroup("View")]
     public List<UIAnimationData> openAnimationList;
+    [FoldoutGroup("View")]
     public List<UIAnimationData> closeAnimationList;
 
     private int currentAnimationPlayCount = 0;
     private Coroutine animationCoroutine;
 
+    [FoldoutGroup("View")]
     public UnityEvent openEvent;
+    [FoldoutGroup("View")]
     public UnityEvent closeEvent;
 
-    public abstract void Init(UIData uiData);
-
-    private void Awake()
-    {
+    public virtual void Init(UIData uiData) {
         canvasGroup = GetComponent<CanvasGroup>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     [Button("Open")]
