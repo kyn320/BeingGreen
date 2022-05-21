@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterMove : MonoBehaviour
+public class CharacterMove : MonoBehaviour
 {
-    [SerializeField] protected float m_Speed = 2f;
-    [SerializeField] protected float m_RotSpeed = 10f;
+    [SerializeField] private float m_Speed = 2f;
+    [SerializeField] private float m_RotSpeed = 10f;
 
-    protected Vector3 m_Direction;
-    protected Vector3 m_PastPos = Vector3.zero;
-    protected float x, z;
+    private Vector3 m_Direction;
+    private Vector3 m_PastPos = Vector3.zero;
 
     public Vector3 Direction { get => m_Direction; set => m_Direction = value; }
 
-    abstract public void CharacterMovement(string Hori, string Verti);
-
-
-    private void MoveCharacter()
+    public void CharacterMovement(string Hori, string Verti)
     {
+        float x = Input.GetAxis(Hori) * Time.deltaTime * m_Speed;
+        float z = Input.GetAxis(Verti) * Time.deltaTime * m_Speed;
+
         Vector3 dir = new Vector3(x, 0, z);
 
         if (!(x == 0 && z == 0))
