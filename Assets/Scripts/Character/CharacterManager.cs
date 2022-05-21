@@ -37,6 +37,22 @@ public class CharacterManager : Singleton<CharacterManager>
     public void UpdateInputed(bool isInput)
     {
         this.isInput = isInput;
+
+        if (this.isInput)
+        {
+            m_Player.VFXAppearance.SetActive(false);
+            m_God.VFXAppearance.SetActive(false);
+        }
+    }
+
+    [Button("Delete Character")]
+    public void DeleteCharacter()
+    {
+        this.isInput = false;
+        m_Player.VFXAppearance.SetActive(true);
+        m_God.VFXAppearance.SetActive(true);
+        Destroy(m_Player.gameObject, 3f);
+        Destroy(m_God.gameObject, 3f);
     }
 
     private void Update()
@@ -60,6 +76,7 @@ public class CharacterManager : Singleton<CharacterManager>
         CharacterMove game = Instantiate(gameObject).GetComponent<CharacterMove>();
         game.transform.position = pos;
         if (Is2P) game.transform.rotation = Quaternion.Euler(0, 180f, 0);
+        game.gameObject.SetActive(true);
         return game;
     }
 }
