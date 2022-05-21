@@ -23,8 +23,8 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         m_StartPlayerPos = (m_SelectNum == 0) ? m_WorldController.GetSpawnPoint(0) : m_WorldController.GetSpawnPoint(1);
         m_StartGodPos = (m_SelectNum == 0) ? m_WorldController.GetSpawnPoint(1) : m_WorldController.GetSpawnPoint(0);
-        m_StartPlayerPos.y = 0.6f;
-        m_StartGodPos.y = 0.6f;
+        m_StartPlayerPos.y = 0.3f;
+        m_StartGodPos.y = 0.3f;
 
         m_Player = SetCharacter(m_PlayerPrefab, m_StartPlayerPos, m_SelectNum == 1);
         m_God = SetCharacter(m_GodPrefab, m_StartGodPos, m_SelectNum == 0);
