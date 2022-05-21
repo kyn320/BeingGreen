@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 3126588929596463026}
   - component: {fileID: 8731393721364825714}
   - component: {fileID: 1211962540370931117}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: God
   m_TagString: Untagged
   m_Icon: {fileID: 0}
