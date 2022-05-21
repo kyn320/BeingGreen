@@ -643,6 +643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 581045163404920041, guid: 30e161769c5d30444a3e47e643ee9e2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 581045163404920045, guid: 30e161769c5d30444a3e47e643ee9e2a, type: 3}
       propertyPath: m_RootOrder
       value: 8
