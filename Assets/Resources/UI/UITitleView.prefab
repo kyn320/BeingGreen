@@ -674,7 +674,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3909386472438384496}
         m_TargetAssemblyTypeName: UITitleView, Assembly-CSharp
-        m_MethodName: EnterGame
+        m_MethodName: OpenPlayHelp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

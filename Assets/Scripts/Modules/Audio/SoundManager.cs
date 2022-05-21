@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>
 {
     public const int MaxSFXPlayCount = 5;
+
+    private float BGMVolume;
+    private float SFXVolume;
 
     private AudioSource bgmAudioPlayer;
 
@@ -15,6 +19,33 @@ public class SoundManager : Singleton<SoundManager>
     {
         bgmAudioPlayer = GetComponent<AudioSource>();
         base.Awake();
+
+        BGMVolume = PlayerPrefs.GetFloat("BGM", 0.5f);
+        SFXVolume = PlayerPrefs.GetFloat("SFX", 0.5f);
+
+        bgmAudioPlayer.volume = BGMVolume;
+
+    }
+
+    public void ChangeBGMVolume(float bgm)
+    {
+        BGMVolume = bgm;
+        bgmAudioPlayer.volume = BGMVolume;
+        PlayerPrefs.SetFloat("BGM", BGMVolume);
+    }
+
+    public void ChangeSFXVolume(float sfx)
+    {
+        SFXVolume = sfx;
+
+        var keyList = sfxPlayerDic.Keys.ToList();
+
+        for (var i = 0; i < keyList.Count; ++i)
+        {
+            sfxPlayerDic[keyList[i]].ChangeVolume(sfx);
+        }
+
+        PlayerPrefs.SetFloat("SFX", SFXVolume);
     }
 
     public void PlayBGM(AudioClip bgm)
@@ -29,7 +60,8 @@ public class SoundManager : Singleton<SoundManager>
         bgmAudioPlayer.Pause();
     }
 
-    public void UnPauseBGM() { 
+    public void UnPauseBGM()
+    {
         bgmAudioPlayer.UnPause();
     }
 
@@ -48,15 +80,17 @@ public class SoundManager : Singleton<SoundManager>
             var groupGo = new GameObject(sfxClip.name);
             groupGo.transform.SetParent(transform);
 
-            List<SoundPoolPlayer> sFXPlayers = new List<SoundPoolPlayer>();
+            List<SoundPoolPlayer> sfxPlayers = new List<SoundPoolPlayer>();
             //SFX 생성 후 등록
             for (var i = 0; i < MaxSFXPlayCount; ++i)
             {
                 var sfxGo = Instantiate(sfxPlayerPrefab, groupGo.transform);
-                sFXPlayers.Add(sfxGo.GetComponent<SoundPoolPlayer>());
+                var sfxPlayer = sfxGo.GetComponent<SoundPoolPlayer>();
+                sfxPlayer.ChangeVolume(SFXVolume);
+                sfxPlayers.Add(sfxPlayer);
             }
 
-            sfxPlayerDic.Add(sfxClip.name, new SoundPool(sfxClip, sFXPlayers));
+            sfxPlayerDic.Add(sfxClip.name, new SoundPool(sfxClip, sfxPlayers));
         }
 
         soundPool = sfxPlayerDic[sfxClip.name];

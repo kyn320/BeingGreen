@@ -15,6 +15,14 @@ public class SoundPool
         this.sfxPlayerList = sfxPlayerList;
     }
 
+    public void ChangeVolume(float volume)
+    {
+        for (var i = 0; i < sfxPlayerList.Count; ++i)
+        {
+            sfxPlayerList[i].ChangeVolume(volume);
+        }
+    }
+
     public void PlaySFX()
     {
         //5개 이상 재생인 경우 Stop후에 재생합니다..

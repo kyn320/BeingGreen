@@ -10,6 +10,10 @@ public class SoundPoolPlayer : MonoBehaviour
 
     public float PlayTime { get { return audioPlayer.time; } }
 
+    public void ChangeVolume(float volume) { 
+        audioPlayer.volume = volume;
+    }
+
     public void Play(AudioClip clip)
     {
         audioPlayer.Stop();

@@ -1150,7 +1150,7 @@ RectTransform:
   m_GameObject: {fileID: 6008540169925355534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 8664089947162011503}
   - {fileID: 665466204543279375}
@@ -1187,8 +1187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewName: 
-  openAnimationList: []
-  closeAnimationList: []
+  openAnimationList:
+  - {fileID: 11400000, guid: 83930c99d2c79644eb469abb9180b679, type: 2}
+  closeAnimationList:
+  - {fileID: 11400000, guid: 31b58847a33d3b548bf6d91f376825f5, type: 2}
   openEvent:
     m_PersistentCalls:
       m_Calls: []
