@@ -87,9 +87,9 @@ public class GameRuleController : Singleton<GameRuleController>
         }
     }
 
-    public void UpdateTileOwners(int tileCount1P, int tileCount2P, int maxCount)
+    public void UpdateBingoTileOwners(int bingoCount1P, int bingoCount2P, int maxCount)
     {
-        if (tileCount1P == maxCount || tileCount2P == maxCount)
+        if (bingoCount1P == maxCount || bingoCount2P == maxCount)
         {
             EndGame();
         }

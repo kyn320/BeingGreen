@@ -1603,7 +1603,7 @@ MonoBehaviour:
   updateOwnerTileCountEvent:
     m_PersistentCalls:
       m_Calls: []
-  updatetotalTileCountEvent:
+  updateTotalTileCountEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1591376979}
@@ -1618,9 +1618,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  updateTotalBingoCountEvent:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 41097702}
         m_TargetAssemblyTypeName: GameRuleController, Assembly-CSharp
-        m_MethodName: UpdateTileOwners
+        m_MethodName: UpdateBingoTileOwners
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

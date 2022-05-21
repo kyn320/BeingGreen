@@ -22,7 +22,9 @@ public class WorldController : MonoBehaviour
     [FoldoutGroup("Tile")]
     public UnityEvent<int, int> updateOwnerTileCountEvent;
     [FoldoutGroup("Tile")]
-    public UnityEvent<int, int, int> updatetotalTileCountEvent;
+    public UnityEvent<int, int, int> updateTotalTileCountEvent;
+    [FoldoutGroup("Tile")]
+    public UnityEvent<int, int, int> updateTotalBingoCountEvent;
     [FoldoutGroup("Tile")]
     public UnityEvent updateBingoEvent;
 
@@ -100,7 +102,7 @@ public class WorldController : MonoBehaviour
             ownerList.RemoveAt(randOwnerDataIndex);
         }
 
-        updatetotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
+        updateTotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
     }
 
     private void UpdateTileOwner(int index, int owner)
@@ -108,10 +110,9 @@ public class WorldController : MonoBehaviour
         ++ownerTileCount[owner];
         --ownerTileCount[(owner + 1) % 2];
 
-        CheckBingoByIndex(index, owner);
-
         updateOwnerTileCountEvent.Invoke(index, owner);
-        updatetotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
+        updateTotalTileCountEvent?.Invoke(ownerTileCount[0], ownerTileCount[1], mapSize.x * mapSize.y);
+        CheckBingoByIndex(index, owner);
     }
 
     public void CheckBingoByIndex(int index, int owner)
@@ -159,6 +160,28 @@ public class WorldController : MonoBehaviour
             }
             updateBingoEvent?.Invoke();
         }
+
+        var p1BingoCount = 0;
+        var p2BingoCount = 0;
+
+        for (var i = 0; i < tileControllers.Length; ++i)
+        {
+            var tileController = tileControllers[i];
+
+            if (tileController.isBingo)
+            {
+                if (tileController.GetOwner() == 0)
+                {
+                    ++p1BingoCount;
+                }
+                else
+                {
+                    ++p2BingoCount;
+                }
+            }
+        }
+
+        updateTotalBingoCountEvent?.Invoke(p1BingoCount, p2BingoCount, tileControllers.Length);
     }
 
     public Vector3 GetSpawnPoint(int owner)
