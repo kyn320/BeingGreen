@@ -10,7 +10,7 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject m_PlayerPrefab;
     [SerializeField] private GameObject m_GodPrefab;
 
-    private int m_SelectNum = 1;
+    private int m_SelectNum = 0;
 
     private CharacterMove m_Player = null;
     private CharacterMove m_God = null;
@@ -33,8 +33,8 @@ public class CharacterManager : Singleton<CharacterManager>
         m_StartPlayerPos.y = 0.6f;
         m_StartGodPos.y = 0.6f;
 
-        m_Player = SetCharacter(m_PlayerPrefab, m_StartPlayerPos).GetComponent<CharacterMove>();
-        m_God = SetCharacter(m_GodPrefab, m_StartGodPos).GetComponent<CharacterMove>();
+        m_Player = SetCharacter(m_PlayerPrefab, m_StartPlayerPos);
+        m_God = SetCharacter(m_GodPrefab, m_StartGodPos, true);
     }
 
 
@@ -54,10 +54,11 @@ public class CharacterManager : Singleton<CharacterManager>
         }
     }
 
-    private GameObject SetCharacter(GameObject gameObject, Vector3 pos)
+    private CharacterMove SetCharacter(GameObject gameObject, Vector3 pos, bool Is2P = false)
     {
-        GameObject game = Instantiate(gameObject);
+        CharacterMove game = Instantiate(gameObject).GetComponent<CharacterMove>();
         game.transform.position = pos;
+        if (Is2P) game.transform.rotation = Quaternion.Euler(0, 180f, 0);
         return game;
     }
 }
