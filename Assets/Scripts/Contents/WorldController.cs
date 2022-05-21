@@ -6,35 +6,32 @@ using Sirenix.OdinInspector;
 
 public class WorldController : MonoBehaviour
 {
+    [FoldoutGroup("Tile")]
     public GameObject tilePrefab;
+    [FoldoutGroup("Tile")]
     public Vector3 tileSize;
 
+    [FoldoutGroup("Tile")]
     public Vector2Int mapSize;
 
+    [FoldoutGroup("Tile")]
     public TileController[] tileControllers;
 
+    [FoldoutGroup("Tile")]
     public int[] ownerTileCount;
+    [FoldoutGroup("Tile")]
     public UnityEvent<int, int> updateOwnerTileCountEvent;
 
+    [FoldoutGroup("Wall")]
     [SerializeField]
     private BoxCollider[] outBoxColliders;
+
+    public Transform[] playerSpawnPoint;
 
     [Button("월드(타일) 생성")]
     public void CreateWorld()
     {
-        outBoxColliders[0].center = new Vector3(mapSize.x * 0.5f + 0.5f, 0, 0);
-        outBoxColliders[0].size = new Vector3(1, 10f, mapSize.y);
-
-        outBoxColliders[1].center = new Vector3(-mapSize.x * 0.5f - 0.5f, 0, 0);
-        outBoxColliders[1].size = new Vector3(1, 10f, -mapSize.y);
-
-        outBoxColliders[2].center = new Vector3(0, 0, mapSize.y * 0.5f + 0.5f);
-        outBoxColliders[2].size = new Vector3(mapSize.x, 10f, 1f);
-
-        outBoxColliders[3].center = new Vector3(0, 0, -mapSize.y * 0.5f - 0.5f);
-        outBoxColliders[3].size = new Vector3(-mapSize.x, 10f, 1f);
-
-
+        CreateWall();
         tileControllers = new TileController[mapSize.x * mapSize.y];
 
         var startOffset = new Vector2(-mapSize.x * 0.5f * (tileSize.x) + tileSize.x * 0.5f
@@ -56,6 +53,24 @@ public class WorldController : MonoBehaviour
                 ++index;
             }
         }
+
+        playerSpawnPoint[0] = tileControllers[0].transform;
+        playerSpawnPoint[1] = tileControllers[mapSize.x * mapSize.y - 1].transform;
+    }
+
+    public void CreateWall()
+    {
+        outBoxColliders[0].center = new Vector3(mapSize.x * 0.5f + 0.5f, 0, 0);
+        outBoxColliders[0].size = new Vector3(1, 10f, mapSize.y);
+
+        outBoxColliders[1].center = new Vector3(-mapSize.x * 0.5f - 0.5f, 0, 0);
+        outBoxColliders[1].size = new Vector3(1, 10f, -mapSize.y);
+
+        outBoxColliders[2].center = new Vector3(0, 0, mapSize.y * 0.5f + 0.5f);
+        outBoxColliders[2].size = new Vector3(mapSize.x, 10f, 1f);
+
+        outBoxColliders[3].center = new Vector3(0, 0, -mapSize.y * 0.5f - 0.5f);
+        outBoxColliders[3].size = new Vector3(-mapSize.x, 10f, 1f);
     }
 
     [Button("랜덤 타일 세팅")]
@@ -108,8 +123,10 @@ public class WorldController : MonoBehaviour
             }
         }
 
-        if(indexXList.Count == mapSize.x) {
-            for (var i = 0; i < indexXList.Count; ++i) {
+        if (indexXList.Count == mapSize.x)
+        {
+            for (var i = 0; i < indexXList.Count; ++i)
+            {
                 tileControllers[indexXList[i]].SetBingo(true);
             }
         }
@@ -133,6 +150,11 @@ public class WorldController : MonoBehaviour
                 tileControllers[indexYList[i]].SetBingo(true);
             }
         }
+    }
+
+    public Vector3 GetSpawnPoint(int owner)
+    {
+        return playerSpawnPoint[owner].position;
     }
 
     public int GetColNum(int index)

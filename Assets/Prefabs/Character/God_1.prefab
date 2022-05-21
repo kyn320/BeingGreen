@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6850414132174853957}
   - component: {fileID: 6850414132174853958}
   - component: {fileID: 7530733774243833311}
+  - component: {fileID: 4934296511259838833}
   m_Layer: 0
   m_Name: God_1
   m_TagString: Untagged
@@ -211,6 +212,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 2
   m_RotSpeed: 10
+--- !u!114 &4934296511259838833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850414132174854008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17218782e6639b34d89cde3f2af12220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createPrefab: {fileID: 2594513679670585271, guid: 8f8dac7e2c1691b4ab91bcee7f303f60, type: 3}
+  createTime: 5
 --- !u!1 &6850414133159387012
 GameObject:
   m_ObjectHideFlags: 0
