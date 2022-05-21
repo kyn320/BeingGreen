@@ -1024,8 +1024,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDontDestroy: 0
   m_WorldController: {fileID: 938378706}
-  m_PlayerPrefab: {fileID: 3947298218509381638, guid: 4c5223df5a60262429acdb6e05b49bbb, type: 3}
-  m_GodPrefab: {fileID: 3947298218509381638, guid: 4c5223df5a60262429acdb6e05b49bbb, type: 3}
+  m_PlayerMalePrefab: {fileID: 5910444178967468046, guid: dc645a53d507c2644b36a29895ee5a0b, type: 3}
+  m_PlayerFemalePrefab: {fileID: 3947298218509381638, guid: 4c5223df5a60262429acdb6e05b49bbb, type: 3}
+  m_GodPrefab: {fileID: 2738325899304153141, guid: 93c19be70b7b49f4a90733d1eb4e89b3, type: 3}
 --- !u!114 &1608530033
 MonoBehaviour:
   m_ObjectHideFlags: 0

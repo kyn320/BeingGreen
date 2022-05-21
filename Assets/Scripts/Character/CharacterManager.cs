@@ -7,10 +7,12 @@ public class CharacterManager : Singleton<CharacterManager>
 {
     [SerializeField] private WorldController m_WorldController;
 
-    [SerializeField] private GameObject m_PlayerPrefab;
+    [SerializeField] private GameObject m_PlayerMalePrefab;
+    [SerializeField] private GameObject m_PlayerFemalePrefab;
     [SerializeField] private GameObject m_GodPrefab;
 
     private int m_SelectNum = 1;
+    private bool m_IsFemale = false;
 
     private CharacterMove m_Player = null;
     private CharacterMove m_God = null;
@@ -26,7 +28,7 @@ public class CharacterManager : Singleton<CharacterManager>
         m_StartPlayerPos.y = 0.3f;
         m_StartGodPos.y = 0.3f;
 
-        m_Player = SetCharacter(m_PlayerPrefab, m_StartPlayerPos, m_SelectNum == 1);
+        m_Player = (m_IsFemale) ? SetCharacter(m_PlayerFemalePrefab, m_StartPlayerPos, m_SelectNum == 1) : SetCharacter(m_PlayerMalePrefab, m_StartPlayerPos, m_SelectNum == 1);
         m_God = SetCharacter(m_GodPrefab, m_StartGodPos, m_SelectNum == 0);
     }
 
