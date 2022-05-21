@@ -258,6 +258,7 @@ MonoBehaviour:
   currentOwner: 0
   tileObject: {fileID: 581045162551513876}
   flipTime: 0.3
+  flipVFX: {fileID: 5465239413508119692}
   flipEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -405,6 +406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19ad9b698a7c7d4790b6909f43967b3, type: 3}
+--- !u!1 &5465239413508119692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3916702968874997907, guid: c19ad9b698a7c7d4790b6909f43967b3, type: 3}
+  m_PrefabInstance: {fileID: 9043934846075700255}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5357857571166604617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4024086945009977686, guid: c19ad9b698a7c7d4790b6909f43967b3, type: 3}
