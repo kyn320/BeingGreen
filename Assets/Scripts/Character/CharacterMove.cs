@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
 {
+    [SerializeField] private GameObject m_VFXAppearance;
     [SerializeField] private float m_Speed = 2f;
     [SerializeField] private float m_RotSpeed = 10f;
 
@@ -13,6 +14,8 @@ public class CharacterMove : MonoBehaviour
     private Vector3 m_PastPos = Vector3.zero;
 
     public Vector3 m_LookDirection;
+
+    public GameObject VFXAppearance { get => m_VFXAppearance; set => m_VFXAppearance = value; }
 
     private void Awake()
     {

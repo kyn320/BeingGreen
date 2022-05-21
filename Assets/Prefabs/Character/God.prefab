@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cd002e5ce6588408c899089dd8a8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_VFXAppearance: {fileID: 1199670598752917073}
   m_Speed: 2
   m_RotSpeed: 10
   m_LookDirection: {x: 0, y: 0, z: 0}
@@ -1560,6 +1561,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a473a7b3da513244b2663b33b38b57e, type: 3}
+--- !u!1 &1199670598752917073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 533751427452952982, guid: 1a473a7b3da513244b2663b33b38b57e, type: 3}
+  m_PrefabInstance: {fileID: 1715398761604528071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6285391580431197432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4680471751480578879, guid: 1a473a7b3da513244b2663b33b38b57e, type: 3}
