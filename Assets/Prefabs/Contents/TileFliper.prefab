@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2594513679670585269}
   - component: {fileID: 2594513679670585270}
+  - component: {fileID: 8681308823483069650}
   m_Layer: 0
   m_Name: TileFliper
   m_TagString: Untagged
@@ -51,6 +52,20 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &8681308823483069650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594513679670585271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9e3416dfddc7e4281fb73e7192390d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
+  autoPlay: 1
 --- !u!1 &2594513680808223057
 GameObject:
   m_ObjectHideFlags: 0

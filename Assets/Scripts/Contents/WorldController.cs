@@ -23,6 +23,8 @@ public class WorldController : MonoBehaviour
     public UnityEvent<int, int> updateOwnerTileCountEvent;
     [FoldoutGroup("Tile")]
     public UnityEvent<int, int, int> updatetotalTileCountEvent;
+    [FoldoutGroup("Tile")]
+    public UnityEvent updateBingoEvent;
 
     [FoldoutGroup("Wall")]
     [SerializeField]
@@ -134,6 +136,7 @@ public class WorldController : MonoBehaviour
             {
                 tileControllers[indexXList[i]].SetBingo(true);
             }
+            updateBingoEvent?.Invoke();
         }
 
         var startY = index - col * mapSize.x;
@@ -154,6 +157,7 @@ public class WorldController : MonoBehaviour
             {
                 tileControllers[indexYList[i]].SetBingo(true);
             }
+            updateBingoEvent?.Invoke();
         }
     }
 
