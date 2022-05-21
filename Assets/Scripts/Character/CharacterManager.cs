@@ -10,7 +10,7 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField] private GameObject m_PlayerPrefab;
     [SerializeField] private GameObject m_GodPrefab;
 
-    private int m_SelectNum = 0;
+    private int m_SelectNum = 1;
 
     private CharacterMove m_Player = null;
     private CharacterMove m_God = null;
@@ -33,8 +33,8 @@ public class CharacterManager : Singleton<CharacterManager>
         m_StartPlayerPos.y = 0.6f;
         m_StartGodPos.y = 0.6f;
 
-        m_Player = SetCharacter(m_PlayerPrefab, m_StartPlayerPos);
-        m_God = SetCharacter(m_GodPrefab, m_StartGodPos, true);
+        m_Player = SetCharacter(m_PlayerPrefab, m_StartPlayerPos, m_SelectNum == 1);
+        m_God = SetCharacter(m_GodPrefab, m_StartGodPos, m_SelectNum == 0);
     }
 
 
