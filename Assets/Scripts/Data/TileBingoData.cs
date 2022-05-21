@@ -6,7 +6,7 @@ using UnityEngine;
 public class TileBingoData : ScriptableObject
 {
     public List<GameObject> grassBingoTileList;
-    public List<GameObject> sandBingoTileList;
+    public List<GameObject> desertBingoTileList;
 
     public GameObject GetRandomTilePrefab(int owner)
     {
@@ -18,7 +18,7 @@ public class TileBingoData : ScriptableObject
                 tilePrefabList = grassBingoTileList;
                 break;
             case 1:
-                tilePrefabList = sandBingoTileList;
+                tilePrefabList = desertBingoTileList;
                 break;
         }
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 4495715997405839143, guid: e8af080002136d74aa46b7cc94b4d1c7, type: 3}
   - {fileID: 2307316546395988710, guid: 363bed63618001342a01f9ee86e1a243, type: 3}
   - {fileID: 1938614575920203981, guid: ae25231c66ab1bc4f9b2ba24c8e12f4e, type: 3}
-  sandBingoTileList:
-  - {fileID: 4495715997405839143, guid: e8af080002136d74aa46b7cc94b4d1c7, type: 3}
-  - {fileID: 2307316546395988710, guid: 363bed63618001342a01f9ee86e1a243, type: 3}
-  - {fileID: 1938614575920203981, guid: ae25231c66ab1bc4f9b2ba24c8e12f4e, type: 3}
+  desertBingoTileList:
+  - {fileID: 7431373419627052084, guid: b6bb9d5ca5b99b1418aa71fda451b6e8, type: 3}
+  - {fileID: 2100223116383654192, guid: 4519b59831c883540bec63247ba5464c, type: 3}
+  - {fileID: 2588062340192970048, guid: 857f47612412de5499bf4cc8e252b78f, type: 3}

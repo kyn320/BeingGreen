@@ -13,6 +13,10 @@ public class UITitleView : UIBaseView
         UIController.Instance.OpenPopup("Option");
     }
 
+    public void OpenPlayHelp() {
+        UIController.Instance.OpenPopup("PlayHelp");
+    }
+
     public void ExitGame() {
         Application.Quit();
     }
