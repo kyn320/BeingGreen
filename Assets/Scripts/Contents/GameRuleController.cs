@@ -20,6 +20,7 @@ public class GameRuleController : Singleton<GameRuleController>
     public UnityEvent<float, float> updatePlayTimeEvent;
     public UnityEvent<float> updatePlayDelaTimeEvent;
 
+    public bool isCount = false;
     public bool isPlay = false;
 
     public UnityEvent initalizeGameEvent;
@@ -41,6 +42,7 @@ public class GameRuleController : Singleton<GameRuleController>
         playTime = gameRule.playTime;
         updatePlayTimeEvent?.Invoke(playTime, gameRule.playTime);
         initalizeGameEvent?.Invoke();
+        isCount = true;
         StartCoroutine("CoWaitStartCountUpdate");
     }
 
@@ -54,11 +56,13 @@ public class GameRuleController : Singleton<GameRuleController>
     public void PauseGame()
     {
         isPlay = false;
+        isCount = false;
         pauseGameEvent?.Invoke();
     }
     public void UnPauseGame()
     {
         isPlay = true;
+        isCount = true;
         unPauseGameEvent?.Invoke();
     }
 
@@ -136,7 +140,8 @@ public class GameRuleController : Singleton<GameRuleController>
         var currentTime = gameRule.startCountTime;
         while (currentTime > 0)
         {
-            currentTime -= Time.deltaTime;
+            if (isCount)
+                currentTime -= Time.deltaTime;
             yield return null;
         }
 

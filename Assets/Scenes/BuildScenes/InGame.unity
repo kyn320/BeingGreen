@@ -4977,6 +4977,7 @@ MonoBehaviour:
   updatePlayDelaTimeEvent:
     m_PersistentCalls:
       m_Calls: []
+  isCount: 0
   isPlay: 0
   initalizeGameEvent:
     m_PersistentCalls:
@@ -19989,7 +19990,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
