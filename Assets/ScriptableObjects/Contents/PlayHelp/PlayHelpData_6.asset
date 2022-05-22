@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962bd9f4644a49b4aad0f596a90d8c98, type: 3}
   m_Name: PlayHelpData_6
   m_EditorClassIdentifier: 
-  screenShot: {fileID: 21300000, guid: 758ac31a9bff9ac4181f54de54a6ecb7, type: 3}
+  screenShot: {fileID: 21300000, guid: 3a50e6b43b099144680f1f274f11d995, type: 3}
   description: "\u2605 \uC0C1\uB300\uC640 \uB098\uC758 \uC2DC\uACC4\uAC00 \uACB9\uCE5C
     \uC601\uC5ED\uC5D0\uC11C\uB294 \uC544\uBB34 \uC77C\uB3C4 \uC77C\uC5B4\uB098\uC9C0
     \uC54A\uC2B5\uB2C8\uB2E4."

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962bd9f4644a49b4aad0f596a90d8c98, type: 3}
   m_Name: PlayHelpData_4
   m_EditorClassIdentifier: 
-  screenShot: {fileID: 21300000, guid: 758ac31a9bff9ac4181f54de54a6ecb7, type: 3}
+  screenShot: {fileID: 21300000, guid: 735342bacaec4d543b335c2d425020a2, type: 3}
   description: "\uAC8C\uC784 \uC885\uB8CC \uC2DC, \uBCF4\uC720\uD55C \uD0C0\uC77C\uC774
     \uB9CE\uC740 \uD50C\uB808\uC774\uC5B4\uAC00 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."

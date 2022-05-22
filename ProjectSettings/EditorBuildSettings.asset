@@ -11,16 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BuildScenes/InGame.unity
     guid: 8b48370937f759f45ae1c3a984533e0c
-  - enabled: 1
-    path: Assets/Scenes/Title_SJ.unity
-    guid: 06cbd8e10b161c9468014e3bd25a6289
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/SampleScene_HJ.unity
-    guid: 016f2883af06dea41990c3a9dc5f3556
-  - enabled: 1
-    path: Assets/Scenes/SampleScene_YN.unity
-    guid: 061cc65d40982224d8fa988d76bb73ec
   m_configObjects: {}
