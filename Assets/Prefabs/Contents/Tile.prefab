@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &581045161942103825
 Transform:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &581045162328865745
 Transform:
   m_ObjectHideFlags: 0
@@ -514,13 +514,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 350a82f02a3ac6d4d9b0130a16dabd84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ae9972503517194abde342ea070e5b0, type: 2}
     - target: {fileID: 919132149155446097, guid: 350a82f02a3ac6d4d9b0130a16dabd84, type: 3}
       propertyPath: m_Name
       value: tile_flip_basic
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 350a82f02a3ac6d4d9b0130a16dabd84, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350a82f02a3ac6d4d9b0130a16dabd84, type: 3}
