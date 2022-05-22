@@ -7,5 +7,6 @@ public class GameRule : ScriptableObject
 {
     public float startCountTime;
     public float playTime;
+    public float endCountTime;
 
 }

@@ -31,25 +31,21 @@ public class CharacterManager : Singleton<CharacterManager>
         m_StartPlayerPos.y = 0.3f;
         m_StartGodPos.y = 0.3f;
 
-        m_Player = (m_IsFemale) ? SetCharacter(m_PlayerFemalePrefab, m_StartPlayerPos, m_SelectNum == 1) : SetCharacter(m_PlayerMalePrefab, m_StartPlayerPos, m_SelectNum == 1);
+        m_Player = SetCharacter(m_PlayerMalePrefab, m_StartPlayerPos, m_SelectNum == 1);
         m_God = SetCharacter(m_GodPrefab, m_StartGodPos, m_SelectNum == 0);
     }
 
     public void UpdateInputed(bool isInput)
     {
         this.isInput = isInput;
-
-        if (this.isInput)
-        {
-            m_Player.VFXAppearance.SetActive(false);
-            m_God.VFXAppearance.SetActive(false);
-        }
     }
 
     [Button("Delete Character")]
     public void DeleteCharacter()
     {
         this.isInput = false;
+        m_Player.CharacterRenderer?.SetActive(false);
+        m_God.CharacterRenderer?.SetActive(false);
         m_Player.VFXAppearance.SetActive(true);
         m_God.VFXAppearance.SetActive(true);
         Destroy(m_Player.gameObject, 3f);
@@ -58,7 +54,7 @@ public class CharacterManager : Singleton<CharacterManager>
 
     private void Update()
     {
-        if (Time.timeScale < 0.1f || !isInput) return;
+        if (!isInput) return;
 
         if (m_SelectNum == 0)
         {
@@ -86,5 +82,10 @@ public class CharacterManager : Singleton<CharacterManager>
         if (Is2P) playerGo.transform.rotation = Quaternion.Euler(0, 180f, 0);
         playerGo.SetActive(true);
         return characterMove;
+    }
+
+    public void StopAllCharacter() {
+        m_Player?.Stop();
+        m_God?.Stop();
     }
 }

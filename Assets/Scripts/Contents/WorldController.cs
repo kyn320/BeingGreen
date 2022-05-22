@@ -224,4 +224,34 @@ public class WorldController : MonoBehaviour
         return ownerTileCount;
     }
 
+    public void FinishCinematic(int winner)
+    {
+        StartCoroutine(CoFinishFlipCinematic(winner, 0.15f));
+        StartCoroutine(CoFinishScaleCinematic(winner, 0.15f));
+    }
+
+    IEnumerator CoFinishFlipCinematic(int winner, float waitTime)
+    {
+        var flipWaitTime = new WaitForSeconds(waitTime);
+        for (var i = 0; i < tileControllers.Length; ++i)
+        {
+            if (winner != tileControllers[i].GetOwner())
+            {
+                tileControllers[i].Flip();
+            }
+            yield return flipWaitTime;
+        }
+    }
+
+    IEnumerator CoFinishScaleCinematic(int winner, float waitTime)
+    {
+        var scaleWaitTime = new WaitForSeconds(waitTime);
+
+        for (var i = 0; i < tileControllers.Length; ++i)
+        {
+            tileControllers[i].FillScale();
+            yield return scaleWaitTime;
+        }
+    }
+
 }

@@ -24,6 +24,9 @@ public class GameRuleController : Singleton<GameRuleController>
 
     public UnityEvent initalizeGameEvent;
     public UnityEvent startGameEvent;
+    public UnityEvent pauseGameEvent;
+    public UnityEvent unPauseGameEvent;
+    public UnityEvent<int> finishGameEvent;
     public UnityEvent<int> endGameEvent;
 
     private void Start()
@@ -48,9 +51,20 @@ public class GameRuleController : Singleton<GameRuleController>
         startGameEvent?.Invoke();
     }
 
-    public void EndGame()
+    public void PauseGame()
     {
-        if(!isPlay)
+        isPlay = false;
+        pauseGameEvent?.Invoke();
+    }
+    public void UnPauseGame()
+    {
+        isPlay = true;
+        unPauseGameEvent?.Invoke();
+    }
+
+    public void FinishGame()
+    {
+        if (!isPlay)
             return;
 
         isPlay = false;
@@ -72,6 +86,23 @@ public class GameRuleController : Singleton<GameRuleController>
         {
             winner = 2;
         }
+        finishGameEvent?.Invoke(winner);
+        StartCoroutine(CoFinishCienematic(ownerTileCounts, winner));
+    }
+
+    IEnumerator CoFinishCienematic(int[] ownerTileCounts, int winner)
+    {
+        var currentTime = gameRule.endCountTime;
+        while (currentTime > 0)
+        {
+            currentTime -= Time.deltaTime;
+            yield return null;
+        }
+        EndGame(ownerTileCounts, winner);
+    }
+
+    public void EndGame(int[] ownerTileCounts, int winner)
+    {
         endGameEvent?.Invoke(winner);
         var resultData = new UIGameResultPopupData(ownerTileCounts, winner);
         UIController.Instance.OpenPopup(resultData);
@@ -88,7 +119,7 @@ public class GameRuleController : Singleton<GameRuleController>
 
         if (playTime <= 0)
         {
-            EndGame();
+            FinishGame();
         }
     }
 
@@ -96,7 +127,7 @@ public class GameRuleController : Singleton<GameRuleController>
     {
         if (bingoCount1P == maxCount || bingoCount2P == maxCount)
         {
-            EndGame();
+            FinishGame();
         }
     }
 

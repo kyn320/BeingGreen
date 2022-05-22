@@ -270,7 +270,7 @@ MonoBehaviour:
   isBingo: 0
   bingoVFX: {fileID: 1718087051568309833}
   bingoTilePoint: {fileID: 4242272676168747432}
-  fillTime: 0
+  fillTime: 0.2
 --- !u!54 &4129475041365607511
 Rigidbody:
   m_ObjectHideFlags: 0

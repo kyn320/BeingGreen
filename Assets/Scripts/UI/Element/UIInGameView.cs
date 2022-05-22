@@ -10,10 +10,8 @@ public class UIInGameView : UIBaseView
 
     public void PauseGame()
     {
-        if (GameRuleController.Instance.isPlay)
-        {
-            Time.timeScale = Time.timeScale == 1 ? 0 : 1;
-        }
+        UIController.Instance.OpenPopup("Pause");
+        GameRuleController.Instance.PauseGame();
     }
 
     public void UpdatePlayTime(float currentTime, float maxTime)

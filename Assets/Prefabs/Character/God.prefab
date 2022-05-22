@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cd002e5ce6588408c899089dd8a8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_characterRenderer: {fileID: 8217889439057061088}
   m_VFXAppearance: {fileID: 1199670598752917073}
   m_Speed: 2
   m_RotSpeed: 10
@@ -675,6 +676,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createPrefab: {fileID: 239491177255530408, guid: c0cc3a7d7ef8b5f43bd558c198faeae4, type: 3}
   createTime: 5
+  updateDeltaTimeEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2944852022812397346
 GameObject:
   m_ObjectHideFlags: 0
